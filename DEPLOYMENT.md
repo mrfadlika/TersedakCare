@@ -56,14 +56,7 @@ git push -u origin main
 4. **Output Directory**: `.next` (default)
 
 ### 2.4 Environment Variables (PENTING!)
-Klik **"Environment Variables"** dan tambahkan:
-
-| Name | Value |
-|------|-------|
-| `NEXT_PUBLIC_SUPABASE_URL` | `https://budwqhkljlthkrgflewa.supabase.co` |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZHdxaGtsamx0aGtyZ2ZsZXdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg2NDg2MjgsImV4cCI6MjA4NDIyNDYyOH0.CJyFGzf_ZJ2prSoTadTdTRwDWCg5hmkgtr2qvDzWzVQ` |
-| `SUPABASE_SERVICE_ROLE_KEY` | `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZHdxaGtsamx0aGtyZ2ZsZXdhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODY0ODYyOCwiZXhwIjoyMDg0MjI0NjI4fQ.mgfDgH2T4-Eo9mkLdsy2gaRRbwm_pmFNRLeediybG0E` |
-| `JWT_SECRET` | `tersedakcare-production-secret-key-2024` |
+Klik **"Environment Variables"** dan tambahkan env
 
 > ⚠️ **Penting**: Ganti `JWT_SECRET` dengan string acak yang kuat untuk production!
 
