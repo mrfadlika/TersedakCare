@@ -72,7 +72,7 @@ Klik **"Environment Variables"** dan tambahkan env
 ## Langkah 3: Setup Supabase (Jika Belum)
 
 ### 3.1 Buat Tabel di Supabase
-1. Buka https://supabase.com/dashboard/project/budwqhkljlthkrgflewa/sql/new
+1. Buka https://supabase.com/
 2. Copy isi file `supabase_schema.sql`
 3. Paste dan klik **"Run"**
 
