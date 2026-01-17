@@ -1,0 +1,66 @@
+// Prisma Schema for Tersedak Care
+// Database: MySQL (Railway) or PostgreSQL (Supabase)
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql" // Change to "postgresql" for Supabase
+  url      = env("DATABASE_URL")
+}
+
+// User model - stores basic user info for assessments
+model User {
+  id          String   @id @default(cuid())
+  name        String?
+  email       String?  @unique
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  assessments Assessment[]
+}
+
+// Assessment model - stores pre-test and post-test results
+model Assessment {
+  id             String   @id @default(cuid())
+  userId         String
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type           String   // 'pretest' | 'posttest'
+  score          Int
+  totalQuestions Int
+  percentage     Int
+  answers        Json     // Array of answers with question IDs
+  categoryScores Json?    // Breakdown by category
+  duration       Int?     // Time taken in seconds
+  completedAt    DateTime @default(now())
+
+  @@index([userId])
+  @@index([type])
+}
+
+// Bookmark model - for saved materials (optional, can use localStorage)
+model Bookmark {
+  id        String   @id @default(cuid())
+  userId    String
+  materialId String
+  title     String
+  category  String
+  path      String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, materialId])
+  @@index([userId])
+}
+
+// LearningProgress model - tracks module completion
+model LearningProgress {
+  id            String   @id @default(cuid())
+  userId        String
+  moduleId      String
+  completed     Boolean  @default(false)
+  completedAt   DateTime?
+  lastAccessedAt DateTime @default(now())
+
+  @@unique([userId, moduleId])
+  @@index([userId])
+}
