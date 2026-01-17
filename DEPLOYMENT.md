@@ -15,8 +15,8 @@ cd d:\Intechrest\TersedakCare
 git init
 ```
 
-### 1.2 Buat file .gitignore
-Pastikan file `.gitignore` sudah ada dengan konten:
+### 1.2 Pastikan .gitignore sudah benar
+File `.gitignore` harus berisi:
 ```
 node_modules
 .next
@@ -56,23 +56,38 @@ git push -u origin main
 4. **Output Directory**: `.next` (default)
 
 ### 2.4 Environment Variables (PENTING!)
-Klik **"Environment Variables"** dan tambahkan env
+Klik **"Environment Variables"** dan tambahkan:
 
-> ⚠️ **Penting**: Ganti `JWT_SECRET` dengan string acak yang kuat untuk production!
+| Name | Value |
+|------|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | *(URL dari Supabase Dashboard)* |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | *(Anon Key dari Supabase Dashboard)* |
+| `SUPABASE_SERVICE_ROLE_KEY` | *(Service Role Key dari Supabase Dashboard)* |
+| `JWT_SECRET` | *(Buat string acak yang kuat, minimal 32 karakter)* |
 
-### 2.5 Deploy
+> ⚠️ **JANGAN** commit keys ke repository! Gunakan environment variables saja.
+
+### 2.5 Mendapatkan Keys dari Supabase
+1. Buka https://supabase.com/dashboard
+2. Pilih project Anda
+3. Pergi ke **Settings** → **API**
+4. Copy:
+   - **Project URL** → `NEXT_PUBLIC_SUPABASE_URL`
+   - **anon public** key → `NEXT_PUBLIC_SUPABASE_ANON_KEY`  
+   - **service_role** key → `SUPABASE_SERVICE_ROLE_KEY`
+
+### 2.6 Deploy
 1. Klik **"Deploy"**
 2. Tunggu proses build (±2-5 menit)
 3. Setelah selesai, Anda akan mendapat URL seperti:
-   - `tersedakcare.vercel.app` atau
-   - `tersedakcare-username.vercel.app`
+   - `tersedakcare.vercel.app`
 
 ---
 
 ## Langkah 3: Setup Supabase (Jika Belum)
 
 ### 3.1 Buat Tabel di Supabase
-1. Buka https://supabase.com/
+1. Buka Supabase Dashboard → SQL Editor
 2. Copy isi file `supabase_schema.sql`
 3. Paste dan klik **"Run"**
 
@@ -109,15 +124,6 @@ Pastikan tabel berikut sudah dibuat:
 ### Login Tidak Berfungsi
 - Pastikan `JWT_SECRET` sudah diset di Vercel
 - Clear cookies browser dan coba lagi
-
----
-
-## Custom Domain (Opsional)
-
-1. Di Vercel Dashboard, buka project
-2. Klik **"Settings"** → **"Domains"**
-3. Tambahkan domain custom Anda
-4. Ikuti instruksi DNS yang diberikan
 
 ---
 
